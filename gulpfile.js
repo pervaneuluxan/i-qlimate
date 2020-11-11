@@ -1,20 +1,24 @@
 // Include gulp
-var gulp = require("gulp");
+let gulp = require("gulp");
 
 // Include Our Plugins
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var watch = require('gulp-watch');
-var autoprefixer = require('autoprefixer-core');
-var rigger = require('gulp-rigger');
-var minify = require('gulp-minify');
-var minifyCSS = require('gulp-minify-css');
-var rename = require("gulp-rename"); //minify elediyimiz dosyanın adını değiştirmek için kullandık bunu
-var concat = require('gulp-concat'); //tüm js dosyalarını birleştirip all.js diye bir js dosyasında toplamak için
-var flatten = require('gulp-flatten'); //fondaki klasör altında olan fontları tek klasöre toplamak için
+let sass = require('gulp-sass');
+let postcss = require('gulp-postcss');
+let watch = require('gulp-watch');
+let rigger = require('gulp-rigger');
+let minify = require('gulp-minify');
+let minifyCSS = require('gulp-minify-css');
+let rename = require("gulp-rename"); //minify elediyimiz dosyanın adını değiştirmek için kullandık bunu
+let concat = require('gulp-concat'); //tüm js dosyalarını birleştirip all.js diye bir js dosyasında toplamak için
+let flatten = require('gulp-flatten'); //fondaki klasör altında olan fontları tek klasöre toplamak için
+let imagemin = require('gulp-imagemin');
+let imageminMozjpeg = require('imagemin-mozjpeg');
+let autoprefixer = require('gulp-autoprefixer');
+let babel = require('gulp-babel');
+let browserSync = require('browser-sync').create();
 
 
-var path = {
+let path = {
     build: { //Burada işlemden sonra bitmiş dosyaların nereye koyulacağını gösteriyoruz
         html: 'build/',
         js: 'build/js/',
@@ -45,6 +49,16 @@ var path = {
 };
 
 
+
+gulp.task('browserSync:build', function () {
+    browserSync.init({
+        server: {
+            baseDir: 'build'
+        },
+        port: 8080
+    })
+})
+
 gulp.task('html:build', async function () {
     gulp.src(path.src.html)
         .on('error', function (err) {
@@ -52,14 +66,16 @@ gulp.task('html:build', async function () {
             this.emit('end')
         })
         .pipe(rigger()) //rigger ile dosyaları birleşdiriyoruz header footer gibi komponentleri import ediyoruz bir nevi
-        .pipe(gulp.dest(path.build.html)); //Выплюнем их в папку build
+        .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
 });
-
 
 gulp.task('js:build', async function () {
     gulp.src(path.src.js) //burdakileri al derle
-
         .pipe(concat('all.js'))
+        .pipe(babel({
+            presets: ['@babel/env'],
+            "plugins": ["@babel/plugin-proposal-class-properties"]
+        }))
         .pipe(gulp.dest(path.build.js)) //minify etmeden all.js dosyasını ekledik aşağıdaki noSource: true  komutunu silersek buna gerek olmayacak sanırım denemedim ama mantık olarak o kod minify olunmamışını eklemesini engelliyor
         .pipe(minify({
             ext: {
@@ -68,8 +84,14 @@ gulp.task('js:build', async function () {
             },
             noSource: true //bu build altındaki js klasörüne düşen index.js yi düşürmüyor sadece min olan düşüyor
         }))
-
-
+        .pipe(babel({
+            presets: ['@babel/env'],
+            "plugins": ["@babel/plugin-proposal-class-properties"],
+            "plugins": ["@babel/plugin-proposal-export-namespace-from"],
+            "plugins": ["@babel/plugin-proposal-nullish-coalescing-operator"],
+            "plugins": ["@babel/plugin-proposal-numeric-separator"],
+            "plugins": ["@babel/plugin-proposal-optional-chaining"]
+        }))
         .pipe(gulp.dest(path.build.js)); //derlenmiş dosyayı buraya at
 });
 
@@ -81,10 +103,12 @@ gulp.task('css:build', async function () {
             console.log(err)
             this.emit('end')
         })
-        .pipe(postcss([autoprefixer({browsers: ["> 0%"]})]))
+        .pipe(autoprefixer({
+            cascade: false
+        }))
         .pipe(gulp.dest(path.build.css))
         .pipe(minifyCSS())
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(path.build.css)); //build deki css e atar
 });
 
@@ -95,7 +119,13 @@ gulp.task('image:build', async function () {
             console.log(err)
             this.emit('end')
         })
+        .pipe(imagemin({
+            use: [
+                imageminMozjpeg()
+            ]
+        }))
         .pipe(gulp.dest(path.build.images));
+
 });
 
 gulp.task('libs:build', async function () {
@@ -117,7 +147,6 @@ gulp.task('vendor:build', async function () {
         .pipe(gulp.dest(path.build.vendor));
 });
 
-
 gulp.task('fonts:build', async function () {
     gulp.src(path.src.fonts)
         .on('error', function (err) {
@@ -129,6 +158,17 @@ gulp.task('fonts:build', async function () {
 });
 
 
+gulp.task('server', async function () {
+    browserSync.init({
+        server: "build",
+        port: 8800,
+        ui: {
+            port: 7700
+        }
+    })
+});
+
+
 gulp.task('build', gulp.series(
     'html:build',
     'js:build',
@@ -136,18 +176,19 @@ gulp.task('build', gulp.series(
     'fonts:build',
     'image:build',
     'libs:build',
-    'vendor:build'
+    'vendor:build',
+    'server'
 ));
 
 
 gulp.task('watch', function () {
-    gulp.watch([path.watch.html], gulp.series('html:build')),
-        gulp.watch([path.watch.css], gulp.series('css:build')),
-        gulp.watch([path.watch.js], gulp.series('js:build')),
-        gulp.watch([path.watch.images], gulp.series('image:build')),
-        gulp.watch([path.watch.fonts], gulp.series('fonts:build')),
-        gulp.watch([path.watch.libs], gulp.series('libs:build')),
-        gulp.watch([path.watch.vendor], gulp.series('vendor:build'))
+    gulp.watch([path.watch.html], gulp.series('html:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.css], gulp.series('css:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.js], gulp.series('js:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.images], gulp.series('image:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.fonts], gulp.series('fonts:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.libs], gulp.series('libs:build')).on('change', browserSync.reload),
+        gulp.watch([path.watch.vendor], gulp.series('vendor:build')).on('change', browserSync.reload)
 });
 
 
