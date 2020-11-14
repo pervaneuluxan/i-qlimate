@@ -184,7 +184,7 @@ gulp.task('build', gulp.series(
 
 gulp.task('watch', function () {
     gulp.watch([path.watch.html], gulp.series('html:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
-        let deletedHtml = path.split('/')[0].split('\\')[path.split('/')[0].split('\\').length - 1]; // html faylarinin silinib silinmediyi src icinde kontrol edilir
+        let deletedHtml = path.split('/')[0].split('\\')[1]; // html faylarinin silinib silinmediyi src icinde kontrol edilir
 
         (async () => {
             const deletedFilePaths = await del([
@@ -200,7 +200,7 @@ gulp.task('watch', function () {
 
         gulp.watch([path.watch.images], gulp.series('image:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
 
-            let deletedImg = path.split('/')[0].split('\\')[path.split('/')[0].split('\\').length - 1]; // img faylarinin silinib silinmediyi src icinde kontrol edilir
+            let deletedImg =path.split('/')[0].split('\\')[1]; // img faylarinin silinib silinmediyi src icinde kontrol edilir
 
             (async () => {
                 const deletedFilePaths = await del([
@@ -214,7 +214,7 @@ gulp.task('watch', function () {
         }),
 
         gulp.watch([path.watch.fonts], gulp.series('fonts:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
-            let deletedFont = path.split('/')[0].split('\\')[path.split('/')[0].split('\\').length - 1]; // fonts qovluqunda fonts faylarinin silinib silinmediyi src icinde kontrol edilir
+            let deletedFont =path.split('/')[0].split('\\')[1]; // fonts qovluqunda fonts faylarinin silinib silinmediyi src icinde kontrol edilir
 
             (async () => {
                 const deletedFilePaths = await del([
@@ -227,7 +227,7 @@ gulp.task('watch', function () {
 
         gulp.watch([path.watch.libs], gulp.series('libs:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
 
-            let deletedLibs = path.split('/')[0].split('\\')[path.split('/')[0].split('\\').length - 1]; // libs faylarinin silinib silinmediyi src icinde kontrol edilir
+            let deletedLibs =path.split('/')[0].split('\\')[1]; // libs faylarinin silinib silinmediyi src icinde kontrol edilir
 
             (async () => {
                 const deletedFilePaths = await del([
