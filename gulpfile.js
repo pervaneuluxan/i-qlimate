@@ -17,6 +17,7 @@ let autoprefixer = require('gulp-autoprefixer');
 let babel = require('gulp-babel');
 let browserSync = require('browser-sync').create();
 let del = require('del');
+let paths = require('path');
 
 
 let path = {
@@ -183,58 +184,49 @@ gulp.task('build', gulp.series(
 
 
 gulp.task('watch', function () {
-    gulp.watch([path.watch.html], gulp.series('html:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
-        let deletedHtml = path.split('/')[0].split('\\')[1]; // html faylarinin silinib silinmediyi src icinde kontrol edilir
+    gulp.watch([path.watch.html], gulp.series('html:build')).on('change', browserSync.reload).on('unlink', function (filepath) {
+        let filePathFromSrc = paths.relative(paths.resolve('src'), filepath) // html faylarinin silinib silinmediyi src icinde kontrol edilir
 
-        (async () => {
-            const deletedFilePaths = await del([
-                'build/' + deletedHtml,
-                '!src/template/*.html'
-            ]);
-        })();
+        let destFilePath = paths.resolve('build', filePathFromSrc);
+
+        del.sync(destFilePath);
 
     }),
         gulp.watch([path.watch.css], gulp.series('css:build')).on('change', browserSync.reload),
 
         gulp.watch([path.watch.js], gulp.series('js:build')).on('change', browserSync.reload),
 
-        gulp.watch([path.watch.images], gulp.series('image:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
+        gulp.watch([path.watch.images], gulp.series('image:build')).on('change', browserSync.reload).on('unlink', function (filepath) {
+            let filePathFromSrc = paths.relative(paths.resolve('src'), filepath) // html faylarinin silinib silinmediyi src icinde kontrol edilir
 
-            let deletedImg =path.split('/')[0].split('\\')[1]; // img faylarinin silinib silinmediyi src icinde kontrol edilir
+            let destFilePath = paths.resolve('build', filePathFromSrc);
 
-            (async () => {
-                const deletedFilePaths = await del([
-                    'build/' + deletedHtml,
-                    'build/fonts/' + deletedFont,
-                    'build/img/' + deletedImg,
-                    '!src/template/*.html'
-                ]);
-            })();
+            del.sync(destFilePath);
 
         }),
 
-        gulp.watch([path.watch.fonts], gulp.series('fonts:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
-            let deletedFont =path.split('/')[0].split('\\')[1]; // fonts qovluqunda fonts faylarinin silinib silinmediyi src icinde kontrol edilir
+        gulp.watch([path.watch.fonts], gulp.series('fonts:build')).on('change', browserSync.reload).on('unlink', function (filepath) {
+            
+            
+            let filePathFromSrc = paths.relative(paths.resolve('src'), filepath) // html faylarinin silinib silinmediyi src icinde kontrol edilir
 
-            (async () => {
-                const deletedFilePaths = await del([
-                    'build/fonts/' + deletedFont,
-                    '!src/template/*.html'
-                ]);
-            })();
+            let endPath=paths.basename(filePathFromSrc)
+
+            let destFilePath = paths.resolve('build/fonts/', endPath);
+            
+            del.sync(destFilePath);
 
         }),
 
-        gulp.watch([path.watch.libs], gulp.series('libs:build')).on('change', browserSync.reload).on('unlink', function (path, stats) {
+        gulp.watch([path.watch.libs], gulp.series('libs:build')).on('change', browserSync.reload).on('unlink', function (filepath) {
 
-            let deletedLibs =path.split('/')[0].split('\\')[1]; // libs faylarinin silinib silinmediyi src icinde kontrol edilir
+            let nameDir=paths.dirname(filepath)
 
-            (async () => {
-                const deletedFilePaths = await del([
-                    'build/libs/' + deletedLibs,
-                    '!src/template/*.html'
-                ]);
-            })();
+            let filePathFromSrc = paths.relative(paths.resolve('src'), nameDir) // html faylarinin silinib silinmediyi src icinde kontrol edilir
+            
+            let destFilePath = paths.resolve('build', filePathFromSrc);
+            
+            del.sync(destFilePath);
 
         }),
 
