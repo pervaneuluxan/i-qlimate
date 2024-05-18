@@ -1,0 +1,61 @@
+.featureItem{
+    width: 100%;
+    border-radius: 2.4rem;
+    border: 1px solid $secondary-color;
+    background: #FFF;
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s ease-in-out;
+    height: 100%;
+
+    &:hover{
+        box-shadow: -4px 4px 12px 0px rgba(42, 176, 98, 0.10), -16px 14px 22px 0px rgba(42, 176, 98, 0.09), -37px 32px 29px 0px rgba(42, 176, 98, 0.05), -65px 56px 34px 0px rgba(42, 176, 98, 0.01), -101px 88px 38px 0px rgba(42, 176, 98, 0.00);
+    }
+
+    &__icon{
+        padding: 1.6rem 1.8rem;
+        border-radius: 1.3rem;
+        border: 1px solid #EAE9F5;
+        background: #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 1px 1px 0px rgba(120, 120, 120, 0.10), 0px 2px 2px 0px rgba(120, 120, 120, 0.09), 0px 5px 3px 0px rgba(120, 120, 120, 0.05), 0px 10px 4px 0px rgba(120, 120, 120, 0.01), 0px 15px 4px 0px rgba(120, 120, 120, 0.00);
+        margin-bottom: 2.3rem;
+
+        img{
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+        }
+    }
+    h5{
+        @include font($mpm,2.4rem,$secondary-color,150%);
+        margin-bottom: 1.6rem;
+    }
+
+    ul{
+        padding-left: 0;
+        margin-bottom: 0;
+        padding-left: 2rem;
+
+        li{
+            @include font($mp,1.6rem,#676767,150%);
+
+            &:not(:last-child){
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    p{
+        @include font($mp,1.6rem,#676767,150%);
+
+        &:not(:last-child){
+            margin-bottom: 1rem;
+        }
+    }
+}

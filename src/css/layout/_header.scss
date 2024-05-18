@@ -1,3 +1,85 @@
 .header{
-	
+	padding: 2.6rem 0;
+    &__in{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__logo{
+        width: 17rem;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &In{
+
+        background: $secondary-color;
+        .nav{
+            &-link{
+                color: #fff;
+
+                &:hover{
+                    color: #fff;
+                }
+            }
+
+            &-toggle{
+                &::after{
+                    background: url(../../img/mdi_chevron-down-white.svg);
+                }
+            }
+
+            &-dropdown{
+                .nav-link{
+                    color: $secondary-color;
+
+                    @include respondmax(lg){
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .langMenu__btn{
+            &::after{
+                background: url(../../img/mdi_chevron-down-lang.svg);
+            }
+        }
+
+        .menu-icon span{
+            background-color: #fff;
+        }
+        
+       
+    }
+
+    &.sticky{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba($color: #fff, $alpha: .9);
+        z-index: 2000;
+        padding: 1.6rem 0;
+        animation: moveFromTop 1s ease-in-out;
+    }
+
+    &In{
+
+        &.sticky{
+            background-color: rgba($color: $secondary-color, $alpha: .9);
+        }
+    }
+
+}
+
+.logo-white{
+    display:none;
+}
+.headerIn .logo-dark{
+    display:none;
+}
+.headerIn .logo-white{
+    display:block;
 }

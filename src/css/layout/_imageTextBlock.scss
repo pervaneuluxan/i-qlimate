@@ -1,0 +1,101 @@
+.imageTextBlock{
+    padding-bottom: 12.3rem;
+    position: relative;
+    
+
+    @include respondmax(lg){
+        padding-bottom: 4.8rem;
+    }
+
+    .pattern{
+        top: -25%;
+    }
+
+    &.about{
+        padding-top: 7.2rem;
+
+        @include respondmax(lg){
+            padding-top: 4.8rem;
+        }
+    }
+    .row{
+        align-items: center;
+    }
+
+    .content{
+        padding-right: 12rem;
+
+        @include respondmax(lg){
+            padding-right: 0;
+        }
+    }
+
+    .col-lg-6{
+        position: relative;
+    }
+
+    .col-lg-6:nth-child(2){
+        @include respondmax(lg){
+            order: 1;
+        }
+    }
+    .col-lg-6:nth-child(1){
+        @include respondmax(lg){
+            order: 2;
+        }
+    }
+    .col-lg-6:nth-child(3){
+        @include respondmax(lg){
+            order: 1;
+        }
+    }
+
+    .contentImg{
+        @include respondmax(lg){
+            margin-bottom: 3.2rem;
+        }
+    }
+
+    &.imageLeft{
+
+        .col-lg-6:nth-child(1){
+            @include respondmax(lg){
+                order: 1;
+            }
+        }
+        .col-lg-6:nth-child(2){
+            @include respondmax(lg){
+                order: 2;
+            }
+        }
+
+        .content{
+            padding-right: 0;
+            padding-left: 12rem;
+
+            @include respondmax(lg){
+                padding-left: 0;
+            }
+        }
+
+    }
+
+    &.imageRight{
+      
+        .contentFloat{
+            left: 0;
+            right: -20%;
+        }
+
+        .col-lg-6:nth-child(1){
+            @include respondmax(lg){
+                order: 2;
+            }
+        }
+        .col-lg-6:nth-child(2){
+            @include respondmax(lg){
+                order: 1;
+            }
+        }
+    }
+}

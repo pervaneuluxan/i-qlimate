@@ -1,0 +1,53 @@
+.blog{
+    padding: 5.6rem 0 14rem 0;
+    position: relative;
+
+    @include respondmax(lg){
+        padding: 4.8rem 0;
+    }
+
+    .row:nth-child(1){
+        padding-bottom: 4rem;
+        border-bottom: 1px solid #E9E9E9;
+
+        @include respondmax(lg){
+            padding-bottom: 0;
+            border: unset;
+        }
+    }
+
+    .row:nth-child(2){
+        padding-top: 4rem;
+
+        @include respondmax(lg){
+            padding-top: 2.4rem;
+        }
+
+        .col-lg-6,.col-lg-4{
+            margin-bottom: 2.4rem;
+        }
+    }
+    .row:nth-child(3){
+        .col-lg-6,.col-lg-4{
+            margin-bottom: 2.4rem;
+        }
+    }
+
+
+
+    .pattern{
+        top: 5%;
+        z-index: -1;
+    }
+
+    &Title{
+        @include font($mpm,1.8rem,$main-text-color,150%);
+        margin-bottom: 1.6rem;
+    }
+
+    &Small{
+        @include respondmax(lg){
+            display: none;
+        }
+    }
+}

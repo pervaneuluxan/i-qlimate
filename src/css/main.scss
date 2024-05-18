@@ -4,18 +4,50 @@
 @import "abstracts/mixin";
 @import "abstracts/variables";
 
+@import "base/animations";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
 @import "base/fonts";
 
 @import "components/button"; 
+@import "components/langMenu";
+@import "components/contentImg";
+@import "components/servceItem";
+@import "components/projectItem";
+@import "components/blogItem";
+@import "components/menu-icon";
+@import "components/featureItem";
+@import "components/counterItem";
+@import "components/valueItem";
+@import "components/contentFloat";
+@import "components/blogFilter";
+@import "components/blogCard";
+@import "components/share";
+@import "components/offerModal";
 
 @import "layout/footer";
 @import "layout/header";
 @import "layout/navigation";
+@import "layout/mainSlider";
+@import "layout/whatWeDo";
+@import "layout/service";
+@import "layout/partners";
+@import "layout/projects";
+@import "layout/blogs";
+@import "layout/infoImg";
+@import "layout/pageTop";
+@import "layout/calculator";
+@import "layout/features";
+@import "layout/imageTextBlock";
+@import "layout/counter";
+@import "layout/values";
+@import "layout/pageHeader";
+@import "layout/static";
 
 @import "pages/contact";
+@import "pages/blog";
+@import "pages/blog-detail";
 
 
 

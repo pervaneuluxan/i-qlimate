@@ -1,0 +1,36 @@
+.whatWeDo{
+    padding-top: 7.2rem;
+    padding-bottom: 18rem;
+    position: relative;
+
+    @include respondmax(lg){
+        padding-bottom: 9rem;
+    }
+
+    .pattern{
+        right: 0;
+        top: 33%;
+        z-index: -1;
+
+        @include respondmax(lg){
+            bottom: 4rem;
+            top: auto;
+            transform: unset;
+            height: 30%;
+        }
+    }
+
+    .row{
+        align-items: center;
+    }
+
+    .content{
+        padding-right: 10rem;
+
+        @include respondmax(lg){
+            padding-right: 0;
+            margin-bottom: 10rem;
+        }
+    }
+
+}

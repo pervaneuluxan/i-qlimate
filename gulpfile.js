@@ -21,6 +21,15 @@ let paths = require('path');
 
 
 let path = {
+    // build: { //Burada işlemden sonra bitmiş dosyaların nereye koyulacağını gösteriyoruz
+    //     html: 'build/',
+    //     js: '../../../backend/I/iqlimate/themes/iqlimate/assets/js/',
+    //     vendor: '../../../backend/I/iqlimate/themes/iqlimate/assets/js/vendor/', //src deki vendor klasörünü buildeki vendor klasörüne eklemek için
+    //     css: '../../../backend/I/iqlimate/themes/iqlimate/assets/css/main/',
+    //     images: '../../../backend/I/iqlimate/themes/iqlimate/assets/img/',
+    //     fonts: '../../../backend/I/iqlimate/themes/iqlimate/assets/fonts/',
+    //     libs: '../../../backend/I/iqlimate/themes/corpowid/assets/libs/' //bower ile src klasörüne yüklediğim dosyaları build klasörüne eklemek için
+    // },
     build: { //Burada işlemden sonra bitmiş dosyaların nereye koyulacağını gösteriyoruz
         html: 'build/',
         js: 'build/js/',

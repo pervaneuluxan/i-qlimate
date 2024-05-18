@@ -1,0 +1,37 @@
+.service{
+    position: relative;
+    padding: 6.4rem 0;
+    background: $primary-color;
+
+    .vector{
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include respondmax(lg){
+            max-width: 45%;
+        }
+    }
+    .pattern{
+        left: 0;
+        bottom: 10rem;
+    }
+    .col-lg-6{
+        z-index: 10;
+
+        &:nth-child(2){
+            padding-right: 1.2rem;
+            @include respondmax(lg){
+                margin-bottom: 5.6rem;
+                padding-right: 1.6rem;
+            }
+        }
+        &:nth-child(3){
+            padding-left:1.2rem ;
+
+            @include respondmax(lg){
+                padding-left: 1.6rem;
+            }
+        }
+    }
+}

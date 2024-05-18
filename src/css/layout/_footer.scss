@@ -1,3 +1,193 @@
 .footer{
+    padding: 8.4rem 0;
+    border-top: 1px solid #F2F2F2;
+    background: #FFF;
+
+    @include respondmax(lg){
+        padding: 4.4rem 0;
+    }
 	
+    &__top{
+        justify-content: space-between;
+        padding-bottom: 3.2rem;
+        border-bottom:1px solid #EAEAEA;
+
+        @include respondmax(lg){
+            flex-direction: column;
+        }
+
+       .form-group{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+
+            @include respondmax(lg){
+                width: 100%;
+                flex-direction: column;
+            }
+       }
+
+       .form-inline{
+            @include respondmax(lg){
+                width: 100%;
+            }
+       }
+
+       .form-control{
+            width: 27rem;
+            border-radius: .8rem;
+            border: 1px solid #DEDEDE;
+            background: #F9F9F9;
+            height: auto;
+            padding: 1.4rem 1.6rem;
+            @include font($mpm,1.4rem,#62666B,150%);
+
+            &:focus{
+                box-shadow: 0 0 0 0.25rem rgba($secondary-color,.3);
+            }
+
+            @include respondmax(lg){
+                width: 100%;
+                margin-bottom: .8rem;
+            }
+       }
+    }
+
+    &__logo{
+        width: 23.1rem;
+        margin-bottom: 1.4rem;
+
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &__text{
+        @include font($mpm,1.6rem,$main-text-color,160%);
+        text-transform: uppercase;
+        margin-bottom: 4rem;
+
+        @include respondmax(lg){
+            text-align: center;
+        }
+    }
+
+    .col-lg-5{
+       @include respondmax(lg){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+       }
+    }
+
+    .col-lg-7{
+        display: flex;
+        justify-content: flex-end;
+
+        @include respondmax(lg){
+            justify-content: center;
+        }
+    }
+    &__links{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @include respondmax(lg){
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+
+        a{
+            @include font($mpm,1.6rem,$main-text-color,160%);
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                color:$secondary-color;
+            }
+
+            &:not(:last-child){
+                margin-bottom: 1.6rem;
+            }
+        }
+    }
+
+    &__bottom{
+        padding-top: 3.2rem;
+        justify-content: space-between;
+        
+
+        .col-lg-10{
+            display: flex;
+            align-items: center;
+
+            @include respondmax(lg){
+                flex-direction: column;
+            }
+        }
+
+        &-links{
+          a{
+            @include font($mpm,1.4rem,#676767,150%);
+
+            @include respondmax(lg){
+                display: block;
+                text-align: center;
+            }
+            &:not(:last-child){
+                margin-right: 1.6rem;
+
+                @include respondmax(lg){
+                    margin-right: 0;
+                    margin-bottom: 1.6rem;
+                }
+            }
+          }
+        }
+
+    }
+
+    &__copyright{
+        @include font($mpm,1.4rem,#676767,150%);
+        margin-bottom: 0;
+        margin-right: 2.4rem;
+
+        @include respondmax(lg){
+            margin-bottom: 1.6rem;
+            text-align: center;
+        }
+    }
+    &__social{
+        display: flex;
+        justify-content: flex-end;
+
+        @include respondmax(lg){
+            justify-content: center;
+            margin-top: 2.4rem;
+        }
+
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.52rem;
+            height: 2.52rem;
+            box-shadow: 0px 1.159px 2.317px 0px rgba(0, 0, 0, 0.10), 0px 4.634px 4.634px 0px rgba(0, 0, 0, 0.09), 0px 10.428px 5.793px 0px rgba(0, 0, 0, 0.05), 0px 18.538px 6.952px 0px rgba(0, 0, 0, 0.01), 0px 28.966px 8.11px 0px rgba(0, 0, 0, 0.00);
+            font-size: 1.8rem;
+            color: $main-text-color;
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                color: $secondary-color;
+            }
+            &:not(:last-child){
+                margin-right: 1.5rem;
+            }
+        }
+    }
+
 }

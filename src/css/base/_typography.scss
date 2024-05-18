@@ -1,3 +1,121 @@
-.azn {
-	font-family: $aznb;
+.subheading{
+    @include font($mpm,1.2rem,#fff,160%);
+    text-transform: uppercase;
+    padding: .8rem 1.6rem;
+    border-radius: 4rem;
+    margin: 1.6rem 0;
+    background: $secondary-color;
+    border: 1px solid $secondary-color;
+    display: flex;
+    align-items: center;
+
+    svg{
+        margin: 0 .8rem;
+    }
+    
+
+    &.light{
+        background: #fff;
+        border: 1px solid rgba(26, 80, 53, 0.12);
+        color: $main-text-color;
+    }
+}
+.text-logo{
+    width: 3.4rem;
+    height: 4.33rem;
+    object-fit: cover;
+}
+
+
+.sectionTitle{
+    @include font($mpm,3.4rem,$main-text-color,140%);
+    text-align: center;
+
+    @include respondmax(lg){
+        font-size: 2.2rem;
+    }
+
+    strong{
+        font-family: $mph;
+    }
+
+    span{
+        color: $secondary-color;
+        font-family: $mph;
+    }
+}
+
+.pattern{
+    position: absolute;
+
+    &.left{
+        transform: translateY(-50%) rotateY(180deg);
+        bottom: -17rem;
+    }
+}
+
+.content{
+    @include respondmax(lg){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .sectionTitle{
+        text-align: left;
+        margin-bottom: 1.6rem;
+        @include respondmax(lg){
+            text-align: center;
+        }
+    }
+
+    p{
+        @include font($mp,1.8rem,#676767,160%);
+        margin-bottom: 0;
+
+        @include respondmax(lg){
+            text-align: center;
+        }
+    }
+
+    .button{
+        margin-top: 3.2rem;
+    }
+}
+
+.sectionTop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8rem;
+
+    ul{
+        li{
+            @include font($mp,1.8rem,$main-text-color,160%);
+            margin-bottom: 0;
+            text-align: left;
+        }
+    }
+
+    p{
+        @include font($mp,1.8rem,$main-text-color,160%);
+        margin-bottom: 0;
+        text-align: center;
+        max-width: 80%;
+
+        @include respondmax(lg){
+            max-width: 100%;
+        }
+    }
+
+    &.light{
+        .sectionTitle{
+            color: #fff;
+        }
+
+        p{
+            color: #fff;
+        }
+    }
 }

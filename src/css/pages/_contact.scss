@@ -1,3 +1,105 @@
 .contact {
+    padding: 7.2rem 0 14rem 0;
+    position: relative;
+
+    @include respondmax(lg){
+        padding: 4.8rem 0;
+    }
+
+    .pattern{
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+
+    &Box{
+        display: flex;
+        border-radius: 10.4rem 2.4rem 2.4rem 2.4rem;
+        border: 1px solid #EAEAEA;
+        background: #FFF;
+        padding: 3.2rem;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 10;
+
+        @include respondmax(lg){
+            width: 100%;
+            flex-direction: column;
+            border-radius: unset;
+            border: unset;
+            background: transparent;
+            padding: 0;
+        }
+
+        .contentImg{
+            width: 50%;
+            padding-right: 3.5rem;
+
+            @include respondmax(lg){
+                width: 100%;
+                padding-right: 0;
+            }
+
+            img{
+                box-shadow: unset;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &Form{
+        width: 50%;
+        padding-left: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        @include respondmax(lg){
+            width: 100%;
+            padding-left: 0;
+        }
+
+
+        label{
+            @include font($mpm,1.4rem,#11023B,150%);
+            margin-bottom: 1.2rem;
+
+            span{
+                color: $secondary-color;
+            }
+        }
+
+        .form{
+
+            &-group{
+                &:not(:last-child){
+                    margin-bottom: 1.8rem;
+                }
+            }
+
+            &-control{
+                border-radius: .4rem;
+                background: #F9F9F9;
+                height: auto;
+                padding: 1.4rem 1.6rem;
+                border: unset;
+                @include font($mpm,1.4rem,#62666B,150%);
+
+                &:focus{
+                    box-shadow: 0 0 0 0.25rem rgba($secondary-color,.3);
+                }
+            }
+        }
+
+        textarea{
+            height: 12rem!important;
+        }
+
+        .button{
+            width: 100%;
+            text-align: center;
+        }
+    }
 }
 

@@ -1,0 +1,69 @@
+.pageTop{
+    height: 30.5rem;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 9.5rem 0;
+
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%);
+        z-index: 1;
+    }
+
+    &-calculator{
+        background-image: url('../../img/page-top-cal2.png');
+    }
+    &-about{
+        background-image: url('../../img/page-top-about.png');
+    }
+    &-business{
+        background-image: url('../../img/page-top-business.png');
+    }
+    &-chart{
+        background-image: url('../../img/page-top-chart.png');
+    }
+    &-legal{
+        background-image: url('../../img/page-top-legal.png');
+    }
+    &-contact{
+        background-image: url('../../img/page-top-contact.png');
+    }
+    &-blog-detail{
+        background-image: url('../../img/page-top-blog.png');
+    }
+
+    .col-lg-12{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    h1{
+        @include font($mph,5.8rem,#fff,120%);
+        text-align: center;
+        margin-bottom: 1.6rem;
+
+        @include respondmax(lg){
+            font-size: 2.8rem;
+        }
+    }
+    p{
+        @include font($mpm,1.8rem,#fff,160%);
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+
+}

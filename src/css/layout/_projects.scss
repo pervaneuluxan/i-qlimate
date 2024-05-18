@@ -1,0 +1,80 @@
+.projects{
+    background-image: url(../../img/projects-bcg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 6.4rem 0;
+    overflow: hidden;
+
+    .vector{
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        @include respondmax(lg){
+            width: 30%;
+        }
+    }
+    .pattern{
+        right: 0;
+        bottom: 4rem;
+
+        @include respondmax(lg){
+            bottom: 0;
+            height: 40%;
+        }
+      
+    }
+    &Splide{
+        width: 100%;
+        margin-left: calc((100% - 1240px) / 2);
+
+        @include respondmax(lg){
+            margin-left: 0;
+            padding: 0 1.6rem;
+        }
+
+        .splide{
+            &__slide{
+                border-radius: 1.6rem;
+            }
+
+            &__arrow{
+
+                width: 2.8rem;
+                height: 2.8rem;
+                background: 0 0;
+                background-size: contain;
+                opacity: 1 !important;
+                transform: unset;
+                top: 103%;
+
+                &--prev{
+                    background-image: url('../../img/prime_arrow-left.svg');
+                    left: 0;
+
+                    @include respondmax(lg){
+                        left: 1.6rem;
+                    }
+                }
+                &--next{
+                    background-image: url('../../img/prime_arrow-right.svg');
+                    left: 3rem;
+                    right: auto;
+
+                    @include respondmax(lg){
+                        left: 4.6rem;
+                    }
+                }
+                svg{
+                    display: none;
+                 
+                }
+            }
+
+            &__track{
+                
+            }
+        }
+    }
+}

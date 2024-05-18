@@ -1,0 +1,7 @@
+.pd-5{
+    margin-top: 5.6rem!important;
+
+    @include respondmax(lg){
+        margin-top: 2.4rem!important;
+    }
+}

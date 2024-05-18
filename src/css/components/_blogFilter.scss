@@ -1,0 +1,27 @@
+.blogFilter{
+    border-radius: 2.8rem;
+    border: 1px solid #F2F2F2;
+    background: #FFF;
+    padding: .8rem;
+
+
+    &Box{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 4.8rem;
+        display: none;
+    }
+
+    a{
+        @include font($mpm,1.4rem,$main-text-color,160%);
+        padding: 1rem 3.2rem;
+        border-radius: 3.2rem;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+
+        &.active{
+            background: $primary-color;
+            color: #fff;
+        }
+    }
+}

@@ -1,0 +1,174 @@
+//= template/head.html
+//= template/headerin.html
+
+
+<section class="pageTop pageTop-calculator">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Calculator</h1>
+                <p>Montes sed leo odio neque nulla vitae. Eu molestie dictum adipiscing massa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="calculator">
+  <img src="./img/pattern.svg" class="pattern left" alt="">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 sectionTop">
+        <img src="./img/logo-small-green.svg" class="text-logo" alt="">
+        <span class="subheading">
+          calculator
+        </span>
+        <h2 class="sectionTitle">
+          Business Carbon Offset Calculator
+        </h2>
+        <p>Power usage is a major contributor to a business’s carbon footprint. Enter your data below to calculate your consumption, or if you want faster results, call your utility company and request renewable energy  Amet elementum fringilla morbi id at volutpat eget lectus molestie
+        </p>
+
+      </div>
+      <div class="col-lg-12">
+        <img src="./img/calculator-img.png" class="calculator__img" alt="">
+        <img src="./img/cal-mob.png" class="calculator__img calculator__imgMob" alt="">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 sectionTop">
+        <img src="./img/logo-small-green.svg" class="text-logo" alt="">
+        <span class="subheading">
+          iQlimate
+        </span>
+        <h2 class="sectionTitle">
+          Reduce Your Business Footprint
+        </h2>
+        <p>Power usage is a major contributor to a business’s carbon footprint. Enter your data below to calculate your consumption, or if you want faster results, call your utility company and request renewable energy
+        </p>
+
+      </div>
+      <div class="col-lg-4">
+        <div class="featureItem">
+          <span class="featureItem__icon">
+            <img src="./img/icon1.svg" alt="">
+          </span>
+          <h5>Power Usage</h5>
+          <ul>
+            <li>Use renewable energy sources</li>
+            <li>Put your computers to sleep at night</li>
+            <li>Choose energy-efficient, Energy Star certified If equipment</li>
+            <li>If you have a data center, improve air flow to keep it cool</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="featureItem">
+          <span class="featureItem__icon">
+            <img src="./img/icon2.svg" alt="">
+          </span>
+          <h5>Waste</h5>
+          <ul>
+            <li>Use renewable energy sources</li>
+            <li>Put your computers to sleep at night</li>
+            <li>Choose energy-efficient, Energy Star certified If equipment</li>
+            <li>If you have a data center, improve air flow to keep it cool</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="featureItem">
+          <span class="featureItem__icon">
+            <img src="./img/icon3.svg" alt="">
+          </span>
+          <h5>Travel</h5>
+          <ul>
+            <li>Use renewable energy sources</li>
+            <li>Put your computers to sleep at night</li>
+            <li>Choose energy-efficient, Energy Star certified If equipment</li>
+            <li>If you have a data center, improve air flow to keep it cool</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="infoImg">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 sectionTop">
+              <h2>
+                  Fermentum aliquam sem id eu etiam vel elementum vel.
+              </h2>
+              <p>
+                  Id sed orci a egestas amet ultricies.
+              </p>
+              <a href="" class="button modalOpen">
+                  GET CONTACT
+              </a>
+            
+          </div>
+      </div>
+  </div>
+</section>
+
+
+//= template/footer.html
+//= template/foot.html
+<script>
+    document.addEventListener( 'DOMContentLoaded', function() {
+      var splide1 = new Splide(".partnerSplide", {
+         type: "loop",
+         perPage: 6,
+         perMove:1,
+       autoScroll: {
+         speed: .3,
+     },
+         breakpoints: {
+           1024: {
+             perPage: 4,
+            
+           },
+           767: {
+             perPage: 2,
+         
+           },
+           640: {
+             perPage: 2,
+       
+           },
+         },
+         gap: '1rem',
+         updateOnMove : true,
+         pagination: false,
+         arrows:false
+       })
+       splide1.mount(window.splide.Extensions);
+
+
+       var splide2 = new Splide(".projectsSplide", {
+         type: "loop",
+         perPage: 2,
+         perMove:1,
+    
+         breakpoints: {
+          
+           992: {
+             perPage: 1,
+         
+           },
+          
+         },
+         gap: '2.4rem',
+         pagination: false,
+         arrows:false
+       })
+       splide2.mount();
+   })
+</script>

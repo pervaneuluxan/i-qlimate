@@ -1,34 +1,84 @@
-class Gulp {
-    constructor(name) {
-        return this.name = name;
-    }
-
-    static gulp = () => {
-
-        return 'GULP';
-    }
-
-}
-
-Gulp.gulp()
 
 
+//Lang Menu
+const langBtn=$('.langMenu__btn');
+const langDrp=$('.langMenu__drp');
 
-let info = {
-    name: 'Akber',
-    lastName: 'Akhmedzadeh',
-    age: '23'
-}
-
-
-let split = [{ ...info }].map(item => {
-
-    console.log(item)
-
+langBtn.on('click',function(){
+    $(this).attr('href','javascript:void(0)');
+    $(this).toggleClass('active');
+    langDrp.fadeToggle();
 })
 
-// gulpOptions sperated operator olmadan map olunmuyacaqdi sepereted opereator vasitesiyle biz rahatliqla json objecti map ede bileriy ve yaxudda {gulpOptions} bele
+$('*').on('click',function(e){
+    if(!$(e.target).is('.langMenu__drp') && !$(e.target).is('.langMenu__drp *'))
+    if(!$(e.target).is('.langMenu__btn') && !$(e.target).is('.langMenu__btn *')){
+        langDrp.fadeOut();
+       
+    }
+});
 
-// butun jsler babel vasitesiyle convert edilir
+if(window.innerWidth < 992){
+    $('.nav-toggle').on('click',function(){
+        $(this).find('.nav-dropdown').fadeToggle();
+    })
+}
 
-// bu dosya ve bu dosyada yazilan butun jsler test ucundur js dosyasinda olan butun elementleri sile biler ozunuz istedyiniz yeni js fayllarini yarada bilersiniz
+const menuBtn=$('.menu-icon');
+const nav=$('nav')
+menuBtn.on('click',function(){
+    $(this).toggleClass('active');
+    nav.toggleClass('active');
+})
+$('.count').counterUp({
+    delay: 5,
+    time: 5000
+});
+
+//Blog Filter
+
+$('.blogFilter a').on('click',function(){
+    $(this).attr('href','javascript:void(0)')
+    $('.blogFilter a').removeClass('active');
+    $(this).addClass('active');
+})
+
+//OfferModal
+
+const modal=$('.offerModal');
+const modalOpen=$('.modalOpen');
+const modalClose=$('.offerModal__close');
+
+modalOpen.on('click',function(){
+    $(this).attr('href','javascript:void(0)');
+    modal.addClass('active');
+    $('.offerModal__center').fadeIn();
+})
+modalClose.on('click',function(){
+    $(this).attr('href','javascript:void(0)');
+    modal.removeClass('active')
+    $('.offerModal__center').fadeOut();
+})
+
+const num = 200;
+
+$(window).on('scroll', function () {
+    if ($(window).scrollTop() > num) {
+        $('.header').addClass('sticky');
+    } else {
+        $('.header').removeClass('sticky');
+    }
+});
+
+window.addEventListener('load', AOS.refresh)
+$(function () {
+    AOS.init({
+        once: false,
+    });
+});
+
+if(window.innerWidth < 992){
+    $('.nav-toggle').on('click',function(){
+        $(this).find('.nav-dropdown').fadeToggle();
+    })
+}

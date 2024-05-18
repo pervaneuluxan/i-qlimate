@@ -1,0 +1,7 @@
+.pageHeader{
+    padding-top: 7.2rem;
+
+    @include respondmax(lg){
+        padding-top: 4.8rem;
+    }
+}
